@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:salauddin/secondpage.dart';
 
 void main(){
   runApp(const MyApp());
@@ -50,15 +51,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: btnClr1,
                   onPressed: (){
                     setState(() {
-                      btnClr1=Colors.orangeAccent;
-                      btnText="Button Pressed";
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context)=>Secondpage()));
                     });
 
                   }),
              Container(
                height: 300,
                width: 400,
-               child: Image.asset("assets/images/image2.jpg"),
+               child: Image.asset("assets/images/image1.jpeg"),
              )
 
             ],
