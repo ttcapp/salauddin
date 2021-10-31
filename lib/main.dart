@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:salauddin/secondpage.dart';
+import 'package:salauddin/third.dart';
 
 void main(){
   runApp(const MyApp());
@@ -52,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: (){
                     setState(() {
                       Navigator.push(context, MaterialPageRoute(
-                          builder: (context)=>Secondpage()));
+                          builder: (context)=>ThirdPage()));
                     });
 
                   }),
