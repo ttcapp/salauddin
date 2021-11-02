@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:salauddin/main.dart';
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({Key? key}) : super(key: key);
@@ -7,9 +8,13 @@ class ThirdPage extends StatefulWidget {
   @override
   _ThirdPageState createState() => _ThirdPageState();
 }
+// global variables
+String _email="bappymehedihasan5@gmail.com";
+String _password="105534sm";
 final _formKey=GlobalKey<FormState>();
 TextEditingController emailController =TextEditingController();
 TextEditingController passController =TextEditingController();
+bool passVisit=true;
 class _ThirdPageState extends State<ThirdPage> {
   @override
   Widget build(BuildContext context) {
@@ -32,6 +37,16 @@ class _ThirdPageState extends State<ThirdPage> {
               children: [
                 TextFormField(
                   controller: emailController,
+                  validator: (text){
+                    if(text== null || text.isEmpty){
+                      return "email is empty";
+                    }
+                    else if(text != _email){
+                      return "Incorrect email";
+                    }
+
+                  },
+
                   decoration: InputDecoration(
                     hintText: "Enter Your Email",
                     hintStyle: TextStyle(color: Colors.purpleAccent),
@@ -48,6 +63,19 @@ class _ThirdPageState extends State<ThirdPage> {
                 ),
                 TextFormField(
                   obscureText: passVisi,
+                  validator: (text){
+                    if(text== null || text.isEmpty){
+                      return "password is empty";
+                    }
+                    else if(text.length <=8){
+                      return "password should be atleast 8 character";
+
+                    }
+                    else if(text != _password){
+                      return "Incorrect password";
+                    }
+
+                  },
                   controller: passController,
                   decoration: InputDecoration(
                     hintText: "Enter Your Password",
@@ -80,9 +108,18 @@ class _ThirdPageState extends State<ThirdPage> {
                     primary: Colors.purple
                   ),
                     onPressed: (){
-
+                    setState(() {
+                      if(emailController.text== _email) {
+                        if (passController.text == _password) {
+                          Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyHomePage()));
+                        }
+                      }
+                    });
                     },
-                    child: Text("Log in",style: TextStyle(fontSize: 20),)),
+                    child: Text("Log in",style: TextStyle(fontSize: 20),)
+    ),
               ],
             ),
           ),
