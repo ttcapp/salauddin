@@ -21,6 +21,7 @@ class _CourseState extends State<Course> {
         children: [
           Row(
             children: [
+
             ],
           )
         ],
